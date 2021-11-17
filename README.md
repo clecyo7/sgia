@@ -1,4 +1,6 @@
-`Repositório para desenvolvimento do sistema de demandas e ordens de serviços
+Projeto para gerenciamento de atividade da Igreja
+
+
 Instalação do projeto após clonar
 
 1° composer install
@@ -12,10 +14,7 @@ criar um arquivo database.sqlite na pasta database)
 
 
 
-Projeto para gerenciamento de atividade da Igreja
-
 Esse projeto tem como objetivo sistematizar ações, podendo trazer um avanço e tecnologia auxiliando os Diretores de Departamento.
-
 Nesse primento Momento será desenvolvido no SGIA - Sistema de Gerenciamento Igreja ADV:
 
 Tela de Login
