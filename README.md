@@ -1,4 +1,18 @@
-Projeto para gerenciamento de atividade da Igreja 
+`Repositório para desenvolvimento do sistema de demandas e ordens de serviços
+Instalação do projeto após clonar
+
+1° composer install
+2° Copiar o arquivo .env.example e colar so como .env
+3° executar comando  composer update e depois php artisan key:generate
+4° Nomear APP_ENV ou para "Local" ou "prod" (se for prod mudar tambem APP_DEBUG=false)
+5° Alterar os dados de conexões de banco de dados no arquivo .env (se for usar Sqlite ->
+modificar a contante DB_Connection para sqlite, comentar com # as Contantes DB e
+criar um arquivo database.sqlite na pasta database)
+6° Executar as migrations (php artisan migrate)
+
+
+
+Projeto para gerenciamento de atividade da Igreja
 
 Esse projeto tem como objetivo sistematizar ações, podendo trazer um avanço e tecnologia auxiliando os Diretores de Departamento.
 
