@@ -22,6 +22,13 @@ class CreateUsersTable extends Migration
             $table->rememberToken();
             $table->char('status');
             $table->date('dt_nasci')->nullable();
+            $table->string('end_cep')->nullable();
+            $table->string('end_rua')->nullable();
+            $table->string('end_numero')->nullable();
+            $table->string('end_complemento')->nullable();
+            $table->string('end_bairro')->nullable();;
+            $table->string('end_cidade')->nullable();
+            $table->string('end_uf')->nullable();
             $table->timestamps();
             
         });
