@@ -19,7 +19,13 @@ Route::get('/', function () {
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+Route::get('/welcome', 'HomeController@admin');
+
 Auth::routes();
 
-//Route::get('/admin', 'AuthController@dashboard')->name('admin');
+Route::get('/admin', 'AuthController@dashboard')->name('admin');
+
+Route::get('/patrimonio_create', 'PatrimonioController@index');
+
+
 

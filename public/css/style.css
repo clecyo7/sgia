@@ -5413,7 +5413,7 @@ button.bg-dark:focus {
   background-color: #1d2124 !important; }
 
 .bg-white {
-  background-color: #fff !important; }
+  background-color: rgba(100.00000163912773, 112.000000923872, 163.00000548362732, 1) !important; }
 
 .bg-transparent {
   background-color: transparent !important; }
@@ -8179,7 +8179,7 @@ h1, h2, h3, h4, h5,
 #sidebar {
   min-width: 300px;
   max-width: 300px;
-  background: #32373d;
+  background: rgba(100.00000163912773, 112.000000923872, 163.00000548362732, 1);
   color: #fff;
   -webkit-transition: all 0.3s;
   -o-transition: all 0.3s;
