@@ -9,6 +9,6 @@ class AuthController extends Controller
 {
     public function dashboard(){
        
-       return view('welcome');
+       return view('admin');
     }
 }

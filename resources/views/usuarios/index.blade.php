@@ -2,7 +2,7 @@
 @section('form')
 <div class="form-row">
       <div class="form-group col-md-5">
-        <h3 class="mb-2">Listagem de Patrimônio</h3>
+        <h3 class="mb-2">Listagem de Usuários</h3>
       </div>
       <div class="form-group col-md-5">
       <a href="{{ route('cadastrar_patrimonio') }}" class="btn btn-success mb-2">Adicionar</a>
@@ -25,31 +25,25 @@
                         <thead>
                             <tr>
                                 <th><h6><b>Nome</b></h6></th>
-                                <th><h6><b>Marca</b></h6></th>
-                                <th style="text-align: center;"><h6><b>Valor</b></h6></th>
-                                <th><h6><b>Quantidade</b></h6></th>
-                                <th><h6><b>Número Patrimônio</b></h6></th>
-                                <th><h6><b>Data de Aquisição</b></h6></th>
-                                <th><h6><b>Ação</b></h6></th>
+                                <th><h6><b>E-mail</b></h6></th>
+                                <th><h6><b>Data de Nacimento</b></h6></th>
+                                <th><h6><b>Função</b></h6></th>
                                 <th><h6><b></b></h6></th>
                             </tr>
                         </thead>
 
                         <tbody>
-                            @foreach($patrimonios as $patrimonio)
+                            @foreach($usuarios as $usuario)
                                 <tr>
-                                    <td>{{ $patrimonio->name }}</td>
-                                    <td>{{ $patrimonio->marca }}</td>
-                                    <td>{{ $patrimonio->valor }}</td>
-                                    <td>{{ $patrimonio->quantidade }}</td>
-                                    <td>{{ $patrimonio->nrPatrimonio }}</td>
-                                    <td>{{  date('d-m-Y', strtotime($patrimonio->dtAquisicao)) }}</td>
-                        
+                                    <td>{{ $usuario->name }}</td>
+                                    <td>{{ $usuario->email }}</td>
+                                    <td>{{ date('d-m-Y', strtotime($usuario->dt_nasci)) }}</td>
+                                    <td>Membro</td>
                                     <td style="width: 5%;text-align: center">
                                     <a href="/patrimonio/"><button class="btn btn-info btn-sm fa fa-search" aria-hidden="true" title="Visualizar"></button></a>
                                     </td>
                                     <td style="width: 5%;text-align: center">
-                                        <form method="post" action="/patrimonio/ {{$patrimonio->id}}" onsubmit="return confirm('Tem certeza que deseja remover?')">
+                                        <form method="post" action="/patrimonio/ {{}}" onsubmit="return confirm('Tem certeza que deseja remover?')">
                                             @csrf
                                             @method('DELETE')
                                                 <button class="btn btn-danger btn-sm fa fa-trash" aria-hidden="true" title="Excluir"></button>

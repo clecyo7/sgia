@@ -12,9 +12,11 @@ class PatrimonioController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('patrimonio.create');
+        $patrimonios = Patrimonio::query()->orderBy('id')->get();
+        $mensagem = $request->session()->get('mensagem');
+        return view('patrimonio.index', compact('patrimonios', 'mensagem'));
     }
 
     /**
@@ -24,18 +26,30 @@ class PatrimonioController extends Controller
      */
     public function create()
     {
-        //
+        return view('patrimonio.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+
     public function store(Request $request)
     {
-        //
+       $patrimonio = Patrimonio::create($request->all());
+
+        //Imagem Upload
+    if($request->hasFile('image') && $request->file('image')->isValid()){
+
+        $requestImage = $request->image;
+        $extension = $requestImage->extension();
+        $imageName = $requestImage->getClientOriginalName();
+        $requestImage->move(public_path('img/patrimonio'), $imageName);
+        $patrimonio->image = $imageName;
+        $patrimonio->save();  
+    }
+         $request->session()
+             ->flash(
+                'mensagem',
+                 "Patrimônio nº {$patrimonio->nrPatrimonio} criado com sucesso!"
+             );
+             return redirect()->route('listar_patrimonio');     
     }
 
     /**
@@ -44,9 +58,11 @@ class PatrimonioController extends Controller
      * @param  \App\Patrimonio  $patrimonio
      * @return \Illuminate\Http\Response
      */
-    public function show(Patrimonio $patrimonio)
+    public function show($id)
     {
-        //
+        $patrimonio = Patrimonio::find($id);
+
+        return view('show', ['patrimonio' => $patrimonio]);
     }
 
     /**
@@ -78,8 +94,14 @@ class PatrimonioController extends Controller
      * @param  \App\Patrimonio  $patrimonio
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Patrimonio $patrimonio)
+    public function destroy(Request $request)
     {
-        //
+        Patrimonio::destroy($request->id);
+        $request->session()
+            ->flash(
+                'mensagem',
+                "Patrimônio removido com sucesso"
+            );
+        return redirect()->route('listar_patrimonio');
     }
 }

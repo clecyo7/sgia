@@ -3,10 +3,10 @@
 
 <div class="form-row">
       <div class="form-group col-md-5">
-        <h3 class="mb-2">Cadastro de Patrimônio</h3>
+        <h3 class="mb-2">Visualizar Patrimônio</h3>
       </div>
       <div class="form-group col-md-5">
-      <a href="{{ route('cadastrar_patrimonio') }}" class="btn btn-success mb-2">Adicionar</a>
+      <a href="{{ route('cadastrar_patrimonio') }}" class="btn btn-success mb-2">Update</a>
       </div>
   </div>
 
@@ -18,7 +18,7 @@
   <div class="form-row">
       <div class="form-group col-md-5">
         <label for="nomePatrimonio">Nome</label>
-        <input type="text" class="form-control"  name="name" id="nomePatrimonio">
+        <input type="text" class="form-control"  value="{{$patrimonio->name}}" name="name" id="nomePatrimonio">
       </div>
       <div class="form-group col-md-5">
         <label for="marcaPatrimonio">Marca</label>
@@ -63,9 +63,3 @@
   </div> 
 
 </form>
-
-                      
-
-
-
-@endsection

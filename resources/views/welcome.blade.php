@@ -1,8 +1,8 @@
 
 <!doctype html>
-<html lang="en">
+<html lang="pt-br">
   <head>
-  	<title>Sidebar 09</title>
+  	<title>SGIA Sistema Gerenciamento</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -73,19 +73,22 @@
 	  	
         <ul class="list-unstyled components mb-5">
           <li class="active">
-            <a href="#"><span class="fa fa-home mr-3"></span> Home</a>
+            <a href="admin"><span class="fa fa-home mr-3"></span> Home</a>
           </li>
           <li>
-            <a href="#"><span class="fa fa-gift mr-3"></span> Usuários</a>
+            <a href="/usuarios"><span class="fa fa-gift mr-3"></span> Usuários</a>
           </li>
           <li>
             <a href="#"><span class="fa fa-trophy mr-3"></span> Escalas</a>
           </li>
           <li>
-            <a href="#"><span class="fa fa-cog mr-3"></span> Eventos</a>
+            <a href="/eventos"><span class="fa fa-cog mr-3"></span> Eventos</a>
           </li>
           <li>
-            <a href="patrimonio_create"><span class="fa fa-support mr-3"></span> Patrimônio</a>
+            <a href="/reunioes"><span class="fa fa-cog mr-3"></span> Reuniões</a>
+          </li>
+          <li>
+            <a href="patrimonio"><span class="fa fa-support mr-3"></span> Patrimônio</a>
           </li>
           <li>
             <a href="#"><span class="fa fa-sign-out mr-3"></span> Sign Out</a>
@@ -95,7 +98,7 @@
 
         <!-- Page Content  -->
       <div id="content" class="p-4 p-md-5 pt-5">
-        <h3 class="mb-4">@yield('titulo')</h3>
+
         @yield('form')
       </div>
 		</div>

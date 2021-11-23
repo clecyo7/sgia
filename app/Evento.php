@@ -4,15 +4,13 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Patrimonio extends Model
+class Evento extends Model
 {
     public $timestamps = false;
-    protected $table = 'patrimonios';
+    protected $table = 'eventos';
     protected $primaryKey = 'id';
     protected $fillable = [
-        'name', 'marca', 'valor', 'quantidade','nrPatrimonio','dtAquisicao'
+        'name', 'descricao', 'data', 'local','horario'
     ];
 
-
-    
 }

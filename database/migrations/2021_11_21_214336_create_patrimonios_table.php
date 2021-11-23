@@ -15,7 +15,15 @@ class CreatePatrimoniosTable extends Migration
     {
         Schema::create('patrimonios', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->string('name');
+            $table->string('marca');
+            $table->double('valor');
+            $table->integer('quantidade');
+            $table->integer('nrPatrimonio');
+            $table->date('dtAquisicao');
+            $table->string('image')->nullable();
+
+            $table->timestamps();     
         });
     }
 

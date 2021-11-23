@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -27,11 +28,17 @@ class HomeController extends Controller
         return view('home');
     }
 
-    public function admin()
+    public function admin(Request $request)
     {
-          if(Auth::check() === true){
-             return view('welcome');
-         }
+        $usuarios = User::query()->where('status', 'N')->get(); 
+        return view('admin', compact('usuarios'));
+
+   
         //return view('welcome');
     }
+
+    public function recuperaUsers(){
+        // $usuarios = User::query()->where('status', 'N');   
+    }
+
 }
