@@ -48,46 +48,24 @@ class EventoController extends Controller
 
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Evento  $evento
-     * @return \Illuminate\Http\Response
-     */
     public function show(Evento $evento)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Evento  $evento
-     * @return \Illuminate\Http\Response
-     */
+
     public function edit(Evento $evento)
     {
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Evento  $evento
-     * @return \Illuminate\Http\Response
-     */
+
     public function update(Request $request, Evento $evento)
     {
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Evento  $evento
-     * @return \Illuminate\Http\Response
-     */
+
     public function destroy(Request $request, Evento $evento)
     {
         Evento::destroy($request->id);

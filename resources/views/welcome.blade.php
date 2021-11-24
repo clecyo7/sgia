@@ -85,6 +85,9 @@
             <a href="/eventos"><span class="fa fa-cog mr-3"></span> Eventos</a>
           </li>
           <li>
+            <a href="/departamentos"><span class="fa fa-cog mr-3"></span> Departamentos</a>
+          </li>
+          <li>
             <a href="/reunioes"><span class="fa fa-cog mr-3"></span> Reuniões</a>
           </li>
           <li>

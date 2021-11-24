@@ -4,10 +4,7 @@
 <div class="form-row">
       <div class="form-group col-md-5">
         <h3 class="mb-2">Cadastro de Eventos</h3>
-      </div>
-      <div class="form-group col-md-5">
-      <a href="{{ route('cadastrar_eventos') }}" class="btn btn-success mb-2">Adicionar</a>
-      </div>
+      </div>   
   </div>
 
 

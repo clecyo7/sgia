@@ -48,6 +48,11 @@ Route::get('/reuniao_create', 'ReuniaoController@create');
 Route::post('/reuniao_create', 'ReuniaoController@store')->name('cadastrar_reuniao');
 Route::delete('/reunioes/{id}', 'ReuniaoController@destroy');
 
+/* -- ROTAS DE DEPARTAMENTO -- */
+Route::get('/departamentos', 'DepartamentoController@index')->name('listar_departamentos');
+Route::get('/departamentos_create', 'DepartamentoController@create');
+Route::post('/departamentos_create', 'DepartamentoController@store')->name('cadastrar_departamentos');
+Route::delete('/departamentos/{id}', 'DepartamentoController@destroy');
 
 /* -- ROTAS DE USUARIOS -- */
 Route::get('/usuarios', 'UserController@index');

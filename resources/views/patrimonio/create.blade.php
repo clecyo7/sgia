@@ -5,9 +5,6 @@
       <div class="form-group col-md-5">
         <h3 class="mb-2">Cadastro de Patrimônio</h3>
       </div>
-      <div class="form-group col-md-5">
-      <a href="{{ route('cadastrar_patrimonio') }}" class="btn btn-success mb-2">Adicionar</a>
-      </div>
   </div>
 
 
