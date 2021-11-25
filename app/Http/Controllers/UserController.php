@@ -51,7 +51,8 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        
+        $usuario = User::find($id);
+        return view('usuarios.show',['usuario' => $usuario]);
     }
 
     /**
@@ -74,7 +75,7 @@ class UserController extends Controller
      */
     public function update()
     {
-        //
+        return view('usuarios.update');
     }
 
     /**

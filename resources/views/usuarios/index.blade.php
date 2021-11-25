@@ -40,7 +40,7 @@
                                     <td>{{ date('d-m-Y', strtotime($usuario->dt_nasci)) }}</td>
                                     <td>Membro</td>
                                     <td style="width: 5%;text-align: center">
-                                    <a href="/patrimonio/"><button class="btn btn-info btn-sm fa fa-search" aria-hidden="true" title="Visualizar"></button></a>
+                                    <a href="/usuarios/{{$usuario->id}}"><button class="btn btn-info btn-sm fa fa-search" aria-hidden="true" title="Visualizar"></button></a>
                                     </td>
                                     <td style="width: 5%;text-align: center">
                                         <form method="post" action="/patrimonio/ {{}}" onsubmit="return confirm('Tem certeza que deseja remover?')">

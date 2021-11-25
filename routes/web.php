@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -56,3 +57,5 @@ Route::delete('/departamentos/{id}', 'DepartamentoController@destroy');
 
 /* -- ROTAS DE USUARIOS -- */
 Route::get('/usuarios', 'UserController@index');
+Route::get('/usuarios/{id}', 'UserController@show');
+Route::get('/usuarios_update','UserController@update')->name('update_usuarios');
