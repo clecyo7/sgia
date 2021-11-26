@@ -43,55 +43,37 @@ class UserController extends Controller
 
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Patrimonio  $patrimonio
-     * @return \Illuminate\Http\Response
-     */
+   
     public function show($id)
     {
-        $usuario = User::find($id);
+        $usuario = User::findOrFail($id);
         return view('usuarios.show',['usuario' => $usuario]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Patrimonio  $patrimonio
-     * @return \Illuminate\Http\Response
-     */
+    
     public function edit()
     {
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Patrimonio  $patrimonio
-     * @return \Illuminate\Http\Response
-     */
-    public function update()
+   
+    public function update($id, Request $request)
     {
-        return view('usuarios.update');
+        $usuario = User::find($id);
+        $usuario->usuario = $request->usuario;
+        $usuario->save();
+        return redirect()->route('listar_usuarios');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Patrimonio  $patrimonio
-     * @return \Illuminate\Http\Response
-     */
+   
     public function destroy(Request $request)
     {
-        // Patrimonio::destroy($request->id);
-        // $request->session()
-        //     ->flash(
-        //         'mensagem',
-        //         "Patrimônio removido com sucesso"
-        //     );
-        // return redirect()->route('listar_patrimonio');
+        User::destroy($request->id);
+        $request->session()
+            ->flash(
+                'mensagem',
+                "Usuário removido com sucesso"
+            );
+        return redirect()->route('listar_usuarios');
     }
 }

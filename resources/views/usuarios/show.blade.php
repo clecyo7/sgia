@@ -1,6 +1,8 @@
 @extends('welcome')
 @section('form')
 
+{{$desabilitar = 'disabled'}}
+
 <div class="form-row">
       <div class="form-group col-md-5">
         <h3 class="mb-2">Validar Usuário</h3>
@@ -10,13 +12,13 @@
 
 <div class="card-body">
 
-<form action="" method="POST" >
+<form action="{{ route('update_usuario') }}" method="POST" >
                         @csrf
 
     <div class="form-row">
         <div class="form-group col-md-5">
             <label for="nameReuniao">Nome</label>
-            <input id="name" type="text" value="{{$usuario->name}}" class="form-control @error('name') is-invalid @enderror" name="name"   autocomplete="name" autofocus>
+            <input id="name" type="text" value="{{$usuario->name}}" class="form-control @error('name') is-invalid @enderror" name="name"   autocomplete="name" autofocus {{$desabilitar}} >
             @error('name')
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
@@ -25,11 +27,11 @@
         </div>
         <div class="form-group col-md-5">
             <label for="departamentoReuniao">{{ __('Endereço E-Mail') }}</label>
-            <input id="email" type="email" value="{{$usuario->email}}" class="form-control @error('email') is-invalid @enderror" name="email"  >
+            <input id="email" type="email" value="{{$usuario->email}}" class="form-control @error('email') is-invalid @enderror" name="email"  {{$desabilitar}}  >
         </div>
         <div class="form-group col-md-3">
             <label for="dtEReuniao">{{ __('Data Nascimento') }}</label>
-            <input id="dt_nasci" type="date" value="{{$usuario->dt_nasci}}" class="form-control @error('dt_nasci') is-invalid @enderror" name="dt_nasci" >
+            <input id="dt_nasci" type="date" value="{{$usuario->dt_nasci}}" class="form-control @error('dt_nasci') is-invalid @enderror" name="dt_nasci"  {{$desabilitar}}>
             @error('password')
                 <span class="invalid-feedback" role="alert">
                   <strong>{{ $message }}</strong>
@@ -39,44 +41,45 @@
 
         <div class="form-group col-md-3">
             <label for="dtEReuniao">{{ __('Celular') }}</label>
-            <input id="celular" type="tel" class="form-control @error('celular') is-invalid @enderror" value="{{$usuario->celular}}" name="celular" placeholder="(xx) xxxxx-xxxx" maxlength="11" >
+            <input id="celular" type="tel" class="form-control @error('celular') is-invalid @enderror" value="{{$usuario->celular}}" name="celular" placeholder="(xx) xxxxx-xxxx" maxlength="11"  {{$desabilitar}}>
         </div>
 
         <div class="form-group col-md-3">
             <label for="dtEReuniao">{{ __('Cep do Endereço') }}</label>
-            <input name="end_cep" type="text" id="end_cep" value="{{$usuario->end_cep}}" size="10" maxlength="9" class="form-control"  onblur="pesquisacep(this.value);" />
+            <input name="end_cep" type="text" id="end_cep" value="{{$usuario->end_cep}}" size="10" maxlength="9" class="form-control"  onblur="pesquisacep(this.value);"  {{$desabilitar}}/>
         </div>
     </div>
       
     <div class="form-row">
         <div class="form-group col-md-5">
             <label for="nameReuniao">{{ __('Logradouro') }}</label>
-            <input name="end_rua" type="text" id="end_rua" value="{{$usuario->end_rua}}" size="60" class="form-control"  />
+            <input name="end_rua" type="text" id="end_rua" value="{{$usuario->end_rua}}" size="60" class="form-control"  {{$desabilitar}} />
         </div>
         <div class="form-group col-md-3">
             <label for="departamentoReuniao">{{ __('Número') }}</label>
-            <input id="end_numero" type="text" class="form-control @error('end_numero') is-invalid @enderror" name="end_numero" value="{{ $usuario->end_numero }}">
+            <input id="end_numero" type="text" class="form-control @error('end_numero') is-invalid @enderror" name="end_numero" value="{{ $usuario->end_numero }}"  {{$desabilitar}}>
         </div>
         
         <div class="form-group col-md-4">
             <label for="end_complemento">{{ __('Complemento') }}</label>
-            <input id="end_complemento" type="text" class="form-control" name="end_complemento" value="{{ $usuario->end_complemento }}" size="10" maxlength="9">
+            <input id="end_complemento" type="text" class="form-control" name="end_complemento" value="{{ $usuario->end_complemento }}" size="10" maxlength="9"  {{$desabilitar}}>
         </div>
     </div>   
                        
     <div class="form-row">
         <div class="form-group col-md-5">
             <label for="end_bairro">{{ __('Bairro') }}</label>
-            <input id="end_bairro" type="text" class="form-control @error('end_bairro') is-invalid @enderror" name="end_bairro" value="{{ $usuario->end_numero }}" size="10" >   
+            <input id="end_bairro" type="text" class="form-control @error('end_bairro') is-invalid @enderror" name="end_bairro" value="{{ $usuario->end_numero }}" size="10"  {{$desabilitar}}>   
         </div>
         <div class="form-group col-md-4">
             <label for="end_cidade">{{ __('Cidade') }}</label>
-            <input name="end_cidade" type="text" id="end_cidade" size="40" class="form-control" value="{{ $usuario->end_cidade }}" />
+            <input name="end_cidade" type="text" id="end_cidade" size="40" class="form-control" value="{{ $usuario->end_cidade }}"  {{$desabilitar}}/>
         </div>
 
         <div class="form-group md-4">
             <label for="end_uf" >{{ __('UF') }}</label>
-            <select id="end_uf" class="form-control" name="end_uf" value="{{ $usuario->end_uf }}"  >
+            <input type="hidden" id="ufSelected" value="{{ $usuario->end_uf }}">
+            <select id="end_uf" class="form-control" name="end_uf" value="{{ $usuario->end_uf }}"  {{$desabilitar}} >
 		        <option value="AC">Acre</option>
 		        <option value="AL">Alagoas</option>
 		        <option value="AP">Amapá</option>
@@ -89,8 +92,8 @@
 		        <option value="MA">Maranhão</option>
 		        <option value="MT">Mato Grosso</option>
 		        <option value="MS">Mato Grosso do Sul</option>
-		        <option value="MG">Minas Gerais</option>
-		        <option value="PA">Pará</option>
+		        <option value="MG" >Minas Gerais</option>
+		        <option value="PA" selected>Pará</option>
 		        <option value="PB">Paraíba</option>
 		        <option value="PR">Paraná</option>
 		        <option value="PE">Pernambuco</option>
@@ -111,14 +114,20 @@
     <div class="form-row ">
             <div class="">
             <button type="submit" class="btn btn-primary">
-             {{ __('Registrar') }}
+             {{ __('Atualizar') }}
             </button>
             </div>
         </div>
     </form>
 
-    <script>
-    
+    <script type="text/javascript">
+
+    $(document).ready(function(){
+        
+    $('#end_uf option[value=' + $('#ufSelected').val() + ']').attr('selected','selected');   
+
+    });
+        
     function limpa_formulário_cep() {
             //Limpa valores do formulário de cep.
             document.getElementById('end_rua').value=("");

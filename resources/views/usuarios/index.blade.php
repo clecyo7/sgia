@@ -43,7 +43,7 @@
                                     <a href="/usuarios/{{$usuario->id}}"><button class="btn btn-info btn-sm fa fa-search" aria-hidden="true" title="Visualizar"></button></a>
                                     </td>
                                     <td style="width: 5%;text-align: center">
-                                        <form method="post" action="/patrimonio/ {{}}" onsubmit="return confirm('Tem certeza que deseja remover?')">
+                                        <form method="post" action="/usuarios/ {{$usuario->id}}" onsubmit="return confirm('Tem certeza que deseja remover?')">
                                             @csrf
                                             @method('DELETE')
                                                 <button class="btn btn-danger btn-sm fa fa-trash" aria-hidden="true" title="Excluir"></button>
