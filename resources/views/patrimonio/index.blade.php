@@ -26,10 +26,11 @@
                             <tr>
                                 <th><h6><b>Nome</b></h6></th>
                                 <th><h6><b>Marca</b></h6></th>
-                                <th style="text-align: center;"><h6><b>Valor</b></h6></th>
+                                <th><h6><b>Valor</b></h6></th>
                                 <th><h6><b>Quantidade</b></h6></th>
                                 <th><h6><b>Número Patrimônio</b></h6></th>
                                 <th><h6><b>Data de Aquisição</b></h6></th>
+                                <th><h6><b>Foto</b></h6></th>
                                 <th><h6><b>Ação</b></h6></th>
                                 <th><h6><b></b></h6></th>
                             </tr>
@@ -44,9 +45,10 @@
                                     <td>{{ $patrimonio->quantidade }}</td>
                                     <td>{{ $patrimonio->nrPatrimonio }}</td>
                                     <td>{{  date('d-m-Y', strtotime($patrimonio->dtAquisicao)) }}</td>
+                                    <td>   <img src="/img/patrimonio/{{$patrimonio->image}}" alt="{{$patrimonio->image}}" class="img-preview-index"></td>
                         
                                     <td style="width: 5%;text-align: center">
-                                    <a href="/patrimonio/"><button class="btn btn-info btn-sm fa fa-search" aria-hidden="true" title="Visualizar"></button></a>
+                                    <a href="/patrimonio/{{$patrimonio->id}}"><button class="btn btn-info btn-sm fa fa-search" aria-hidden="true" title="Visualizar"></button></a>
                                     </td>
                                     <td style="width: 5%;text-align: center">
                                         <form method="post" action="/patrimonio/ {{$patrimonio->id}}" onsubmit="return confirm('Tem certeza que deseja remover?')">

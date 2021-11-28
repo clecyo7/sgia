@@ -168,6 +168,22 @@ img {
   vertical-align: middle;
   border-style: none; }
 
+  .img-preview {
+    vertical-align: middle;
+    border-style: none;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    width: 350px;
+  }
+
+  .img-preview-index{
+    width: 80px;
+    margin-top: 2px;
+    margin-bottom: 0px;
+  }
+
+
 svg {
   overflow: hidden;
   vertical-align: middle; }
@@ -1333,7 +1349,7 @@ pre {
 
 .table {
   width: 100%;
-  margin-bottom: 1rem;
+  margin-bottom: 1px;
   color: #212529; }
   .table th,
   .table td {

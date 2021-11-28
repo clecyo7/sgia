@@ -30,7 +30,8 @@ Route::get('/patrimonio', 'PatrimonioController@index')->name('listar_patrimonio
 Route::get('/patrimonio_create', 'PatrimonioController@create')->middleware('auth');
 Route::post('/patrimonio_create', 'PatrimonioController@store')->name('cadastrar_patrimonio')->middleware('auth');
 Route::delete('/patrimonio/{id}', 'PatrimonioController@destroy')->middleware('auth');
-Route::get('/patrimonio/{id}', 'PatrimonioController@show')->middleware('auth');
+Route::put('/patrimonio/update/{id}', 'PatrimonioController@update')->middleware('auth');
+Route::get('/patrimonio/{id}', 'PatrimonioController@edit')->middleware('auth');
 
 
 /* -- ROTAS DE Eventos -- */

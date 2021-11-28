@@ -10,8 +10,10 @@ class Patrimonio extends Model
     protected $table = 'patrimonios';
     protected $primaryKey = 'id';
     protected $fillable = [
-        'name', 'marca', 'valor', 'quantidade','nrPatrimonio','dtAquisicao'
+        'name', 'marca', 'valor', 'quantidade','nrPatrimonio','dtAquisicao', 'image'
     ];
+
+    protected  $guarded = [];
 
 
     

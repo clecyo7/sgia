@@ -1,7 +1,7 @@
 @extends('welcome')
 @section('form')
 
-{{$desabilitar = 'disabled'}}
+{{$desabilitar = ''}}
 
 <div class="form-row">
       <div class="form-group col-md-5">
@@ -112,12 +112,13 @@
     </div>    
 
     <div class="form-row ">
-            <div class="">
+            <div class="form-group col-md-5">
             <button type="submit" class="btn btn-primary">
              {{ __('Atualizar') }}
             </button>
             </div>
-        </div>
+
+    </div>
     </form>
 
     <script type="text/javascript">

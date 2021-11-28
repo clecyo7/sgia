@@ -93,7 +93,7 @@
             <a href="/reunioes"><span class="fa fa-cog mr-3"></span> Reuniões</a>
           </li>
           <li>
-            <a href="patrimonio"><span class="fa fa-support mr-3"></span> Patrimônio</a>
+            <a href="/patrimonio"><span class="fa fa-support mr-3"></span> Patrimônio</a>
           </li>
           <li>
             <a href="#"><span class="fa fa-sign-out mr-3"></span> Sign Out</a>
