@@ -7,12 +7,12 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
-    /**
-     * Handle the incoming request.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+    public function __construct()
+    {
+    $this->middleware('auth');
+    }
+
+    
     public function index(Request $request)
     {
         $usuarios = User::query()->orderBy('id')->get();

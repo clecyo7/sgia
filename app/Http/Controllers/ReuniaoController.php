@@ -8,6 +8,12 @@ use Illuminate\Http\Request;
 class ReuniaoController extends Controller
 {
   
+    public function __construct()
+    {
+    $this->middleware('auth');
+    }
+
+    
     public function index(Request $request)
     {
         $reunioes = Reuniao::query()->orderBy('data')->get();

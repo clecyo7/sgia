@@ -9,11 +9,13 @@ use Illuminate\Support\Facades\DB;
 
 class DepartamentoController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+ 
+    public function __construct()
+    {
+    $this->middleware('auth');
+    }
+
+
     public function index(Request $request)
     {
          $departamentos = DB::table('departamentos')->join('users','departamentos.diretor', '=' , 'users.id')

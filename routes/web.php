@@ -19,42 +19,42 @@ Route::get('/', function () {
     return view('index');
 });
 
-Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');
-Route::get('/welcome', 'HomeController@admin')->middleware('auth');
+Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/welcome', 'HomeController@admin');
 Auth::routes();
-Route::get('/admin', 'AuthController@dashboard')->name('admin')->middleware('auth');
+Route::get('/admin', 'AuthController@dashboard')->name('admin');
 
 
 /* -- ROTAS DE Patrimônio -- */
-Route::get('/patrimonio', 'PatrimonioController@index')->name('listar_patrimonio')->middleware('auth');
+Route::get('/patrimonio', 'PatrimonioController@index')->name('listar_patrimonio');
 Route::get('/patrimonio_create', 'PatrimonioController@create')->middleware('auth');
-Route::post('/patrimonio_create', 'PatrimonioController@store')->name('cadastrar_patrimonio')->middleware('auth');
-Route::delete('/patrimonio/{id}', 'PatrimonioController@destroy')->middleware('auth');
-Route::put('/patrimonio/update/{id}', 'PatrimonioController@update')->middleware('auth');
-Route::get('/patrimonio/{id}', 'PatrimonioController@edit')->middleware('auth');
+Route::post('/patrimonio_create', 'PatrimonioController@store')->name('cadastrar_patrimonio');
+Route::delete('/patrimonio/{id}', 'PatrimonioController@destroy');
+Route::put('/patrimonio/update/{id}', 'PatrimonioController@update');
+Route::get('/patrimonio/{id}', 'PatrimonioController@edit');
 
 
 /* -- ROTAS DE Eventos -- */
-Route::get('/eventos', 'EventoController@index')->name('listar_eventos')->middleware('auth');
+Route::get('/eventos', 'EventoController@index')->name('listar_eventos');
 Route::get('/eventos_create', 'EventoController@create')->middleware('auth');
-Route::post('/eventos_create', 'EventoController@store')->name('cadastrar_eventos')->middleware('auth');
-Route::delete('/eventos/{id}', 'EventoController@destroy')->middleware('auth');
+Route::post('/eventos_create', 'EventoController@store')->name('cadastrar_eventos');
+Route::delete('/eventos/{id}', 'EventoController@destroy');
 
 
 /* -- ROTAS DE REUNIÃO -- */
-Route::get('/reunioes', 'ReuniaoController@index')->name('listar_reuniao')->middleware('auth');
-Route::get('/reuniao_create', 'ReuniaoController@create')->middleware('auth');
-Route::post('/reuniao_create', 'ReuniaoController@store')->name('cadastrar_reuniao')->middleware('auth');
-Route::delete('/reunioes/{id}', 'ReuniaoController@destroy')->middleware('auth');
+Route::get('/reunioes', 'ReuniaoController@index')->name('listar_reuniao');
+Route::get('/reuniao_create', 'ReuniaoController@create');
+Route::post('/reuniao_create', 'ReuniaoController@store')->name('cadastrar_reuniao');
+Route::delete('/reunioes/{id}', 'ReuniaoController@destroy');
 
 /* -- ROTAS DE DEPARTAMENTO -- */
-Route::get('/departamentos', 'DepartamentoController@index')->name('listar_departamentos')->middleware('auth');
-Route::get('/departamentos_create', 'DepartamentoController@create')->middleware('auth');
-Route::post('/departamentos_create', 'DepartamentoController@store')->name('cadastrar_departamentos')->middleware('auth');
-Route::delete('/departamentos/{id}', 'DepartamentoController@destroy')->middleware('auth');
+Route::get('/departamentos', 'DepartamentoController@index')->name('listar_departamentos');
+Route::get('/departamentos_create', 'DepartamentoController@create');
+Route::post('/departamentos_create', 'DepartamentoController@store')->name('cadastrar_departamentos');
+Route::delete('/departamentos/{id}', 'DepartamentoController@destroy');
 
 /* -- ROTAS DE USUARIOS -- */
-Route::get('/usuarios', 'UserController@index')->name('listar_usuarios')->middleware('auth');
-Route::get('/usuarios/{id}', 'UserController@show')->middleware('auth');
-Route::post('/usuarios_update','UserController@update')->name('update_usuario')->middleware('auth');
-Route::delete('/usuarios/{id}', 'UserController@destroy')->middleware('auth');
+Route::get('/usuarios', 'UserController@index')->name('listar_usuarios');
+Route::get('/usuarios/{id}', 'UserController@show');
+Route::post('/usuarios_update','UserController@update')->name('update_usuario');
+Route::delete('/usuarios/{id}', 'UserController@destroy');
