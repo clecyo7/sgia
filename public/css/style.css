@@ -174,13 +174,18 @@ img {
     margin-left: auto;
     margin-right: auto;
     margin-top: 20px;
-    width: 350px;
+    width: 300px;
+  }
+
+  .select-multiple{
+    width: 1000px;
+    height: 150px
   }
 
   .img-preview-index{
-    width: 80px;
-    margin-top: 2px;
-    margin-bottom: 0px;
+    width: 35px;
+    height: 35px;
+    object-fit: contain;
   }
 
 

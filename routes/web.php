@@ -47,6 +47,8 @@ Route::get('/reuniao_create', 'ReuniaoController@create');
 Route::post('/reuniao_create', 'ReuniaoController@store')->name('cadastrar_reuniao');
 Route::delete('/reunioes/{id}', 'ReuniaoController@destroy');
 
+
+
 /* -- ROTAS DE DEPARTAMENTO -- */
 Route::get('/departamentos', 'DepartamentoController@index')->name('listar_departamentos');
 Route::get('/departamentos_create', 'DepartamentoController@create');

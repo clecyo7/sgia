@@ -13,4 +13,8 @@ class Departamento extends Model
     public function diretor(){
         return $this->belongsTo((User::class));
     }
+
+    public function reuniao(){
+        return $this->hasMany((Reuniao::class));
+    }
 }

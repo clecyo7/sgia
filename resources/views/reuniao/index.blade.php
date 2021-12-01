@@ -29,6 +29,7 @@
                                 <th><h6><b>Data</b></h6></th>
                                 <th><h6><b>Local</b></h6></th>
                                 <th><h6><b>Horário</b></h6></th>
+                      
                                 <th><h6><b>Ação</b></h6></th>
                             </tr>
                         </thead>
@@ -37,13 +38,12 @@
                         <tr>
                         @foreach($reunioes as $reuniao)
                             <td>{{$reuniao->name}}</td>
-                            <td>{{$reuniao->departamento}}</td>
-                            <td>{{$reuniao->data}}</td>
+                            <td>{{$reuniao->departamentoReu}}</td>
+                            <td>{{ $reuniao->data }}</td>
                             <td>{{$reuniao->local}}</td>
                             <td>{{$reuniao->horario}}</td>
-                            <td>{{ date("H:i", strtotime( $reuniao->horario )) }}</td>
+           
                                  
-                        
                                  <td style="width: 5%;text-align: center">
                                  <a href="/reuniao"><button class="btn btn-info btn-sm fa fa-search" aria-hidden="true" title="Visualizar"></button></a>
                                  </td>

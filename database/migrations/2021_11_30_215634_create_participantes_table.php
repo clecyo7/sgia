@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateReuniaosTable extends Migration
+class CreateParticipantesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,10 @@ class CreateReuniaosTable extends Migration
      */
     public function up()
     {
-        Schema::create('reuniaos', function (Blueprint $table) {
+        Schema::create('participantes', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->foreignId('departamentoReu')->constrained('departamentos');
-            $table->date('data');
-            $table->string('local');
-            $table->time('horario');
+            $table->foreignId('reuniao')->constrained('reuniaos');
+            $table->foreignId('usuarios')->constrained('users');
             $table->timestamps();
         });
     }
@@ -31,6 +28,6 @@ class CreateReuniaosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('reuniaos');
+        Schema::dropIfExists('participantes');
     }
 }

@@ -7,7 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 class Reuniao extends Model
 {
     protected $primaryKey = 'id';
-    protected $fillable = ['name','departamento', 'data', 'local','horario'];
+    protected $fillable = ['name', 'data', 'local','horario', 'departamentoReu'];
+
+
+    public function departamentos(){
+        return $this->hasMany(Departamento::class);
+    }
 }
 
 
