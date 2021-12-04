@@ -39,28 +39,37 @@
   </div>
 
   <div class="form-row">
-    <div class="form-group col-md-3">
-      <label for="nrPatrimonio">Número do Patrimônio</label>
-      <input type="number" min="1" maxlength="6"  class="form-control" name="nrPatrimonio" id="nrPatrimonio" required>
-    </div>
-    <div class="form-group">
-      <div class="form-group col-md-12">
-        <label for="dtAquisicao">Data de Aquisição</label>
-        <input type="date" class="form-control" name="dtAquisicao" id="dtAquisicao" required>
+      <div class="form-group col-md-3">
+        <label for="nrPatrimonio">Número do Patrimônio</label>
+        <input type="number" min="1" maxlength="6"  class="form-control" name="nrPatrimonio" id="nrPatrimonio" required>
       </div>
-    </div> 
+      <div class="form-group">
+        <div class="form-group col-md-12">
+          <label for="dtAquisicao">Data de Aquisição</label>
+          <input type="date" class="form-control" name="dtAquisicao" id="dtAquisicao" required>
+        </div>
+      </div> 
+  </div>
 
-    <div class="form-group">
-      <div class="form-group col-md-12">
+
+    <div class="form-row">
+      <div class="form-group col-md-6">
         <label for="image">Foto do Patrimônio</label>
         <input type="file" class="form-control" name="image" id="image" class="from-control-file">
       </div>
-    </div> 
-
-    <div class="form-group">
-      <button id="Cadastrar" name="Cadastrar" class="btn btn-success" type="Submit">Cadastrar</button>
+    
+      <div class="form-group col-md-6">
+        <label for="notaFiscal">Nota Fiscal</label>
+        <input type="file" class="form-control" name="notaFiscal" id="notaFiscal" class="from-control-file">
+      </div>     
     </div>
-  </div> 
+
+      <div class="form-row">
+        <div class="form-group col-md-8">
+            <button id="Cadastrar" name="Cadastrar" class="btn btn-success" type="Submit">Cadastrar</button>
+        </div>
+      </div>
+
 
 </form>
 

@@ -46,6 +46,17 @@ class PatrimonioController extends Controller
         $patrimonio->image = $imageName;
         $patrimonio->save();  
     }
+
+    // upload nota fiscal 
+    if($request->hasFile('notaFiscal') && $request->file('notaFiscal')->isValid()){
+
+        $requestNtFiscal = $request->notaFiscal;
+        $extension = $requestNtFiscal->extension();
+        $pdfNtFiscal = $requestNtFiscal->getClientOriginalName();
+        $requestNtFiscal->move(public_path('notaFiscal/patrimonio'), $pdfNtFiscal);
+        $patrimonio->notaFiscal = $pdfNtFiscal;
+        $patrimonio->save();  
+    }
          $request->session()
              ->flash(
                 'mensagem',

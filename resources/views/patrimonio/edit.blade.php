@@ -51,6 +51,11 @@
         <label for="image">Foto do Patrimônio</label>
         <input type="file" class="form-control" name="image" id="image" class="from-control-file">
        <img src="/img/patrimonio/{{$patrimonio->image}}" alt="{{$patrimonio->image}}" class="img-preview">
+    </div> 
+    <div class="form-group col-md-5">
+        <label for="image">Nota Fiscal</label>
+        <input type="file" class="form-control" name="image" id="image" class="from-control-file">
+       <img src="/notaFiscal/patrimonio/{{$patrimonio->notaFiscal}}" alt="{{$patrimonio->notaFiscal}}" class="img-preview">
     </div>  
     </div>
     <div class="form-row">

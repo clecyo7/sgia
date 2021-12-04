@@ -22,6 +22,8 @@ class CreatePatrimoniosTable extends Migration
             $table->integer('nrPatrimonio');
             $table->date('dtAquisicao');
             $table->string('image')->nullable();
+            $table->string('notaFiscal')->nullable();
+            
 
             $table->timestamps();     
         });
