@@ -53,9 +53,10 @@
        <img src="/img/patrimonio/{{$patrimonio->image}}" alt="{{$patrimonio->image}}" class="img-preview">
     </div> 
     <div class="form-group col-md-5">
-        <label for="image">Nota Fiscal</label>
-        <input type="file" class="form-control" name="image" id="image" class="from-control-file">
-       <img src="/notaFiscal/patrimonio/{{$patrimonio->notaFiscal}}" alt="{{$patrimonio->notaFiscal}}" class="img-preview">
+        <label for="notaFiscal">Nota Fiscal</label>
+        <input type="file" class="form-control" name="notaFiscal" id="notaFiscal" class="from-control-file">
+        <a href="/notaFiscal/patrimonio/{{$patrimonio->notaFiscal}}" target="_blank">{{$patrimonio->notaFiscal}}</a>
+       <!--img src="/notaFiscal/patrimonio/{{$patrimonio->notaFiscal}}" alt="{{$patrimonio->notaFiscal}}" class="img-preview"-->
     </div>  
     </div>
     <div class="form-row">

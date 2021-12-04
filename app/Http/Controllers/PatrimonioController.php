@@ -97,9 +97,10 @@ class PatrimonioController extends Controller
         $patrimonio->nrPatrimonio = $request->input('nrPatrimonio');
         $patrimonio->dtAquisicao = $request->input('dtAquisicao');
         $imgAntiga =  'img/patrimonio/' . $patrimonio->image;
+        
+        $imgAntigaBD =  $patrimonio->image;
         $patrimonio->image = $request->file('image');
 
-      
     //Imagem Upload
     if($request->hasFile('image') && $request->file('image')->isValid()){
 
@@ -109,7 +110,7 @@ class PatrimonioController extends Controller
         $requestImage->move(public_path('img/patrimonio'), $imageName);
         $patrimonio['image'] = $imageName;
           
-        if(file_exists($imgAntiga)){
+        if(file_exists($imgAntiga) && !empty( $imgAntigaBD)){
             unlink($imgAntiga);
         }
     }
@@ -130,11 +131,13 @@ class PatrimonioController extends Controller
         $patrimonio = Patrimonio::find($request->id);
         $imgAntiga =  'img/patrimonio/' . $patrimonio->image;
 
-        Patrimonio::destroy($request->id);
-
-        if(file_exists($imgAntiga)){
+        if(file_exists($imgAntiga) && !empty($patrimonio->image)){
             unlink($imgAntiga);
         }
+
+        Patrimonio::destroy($request->id);
+
+       
         $request->session()
             ->flash(
                 'mensagem',
