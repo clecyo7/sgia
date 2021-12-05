@@ -46,7 +46,7 @@
                                  <td style="width: 5%;text-align: center">
                                  <a href="/reuniao/{{$reuniao->id}}"><button class="btn btn-info btn-sm fa fa-search" aria-hidden="true" title="Visualizar"></button></a>
                                  </td>
-                                 @if($user->status == 'N')
+                                 @if($user->status != 'N')
                                  <td style="width: 5%;text-align: center">
                                      <form method="post" action="/reunioes/ {{$reuniao->id}}" onsubmit="return confirm('Tem certeza que deseja remover?')">
                                          @csrf

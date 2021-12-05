@@ -80,11 +80,28 @@ class ReuniaoController extends Controller
    
     public function edit($id)
     {
+        // SELECT reuniaos.name, users.name FROM sgia.participantes
+        // inner join users on users.id = participantes.usuarios
+        // inner join reuniaos on reuniaos.id = participantes.reuniao
+
+       
+
+            
         $title = 'Editar Reunião';
         $usuarios = User::query()->orderBy('id')->get();
         $departamentos = Departamento::query()->orderBy('id')->get();
        $reuniao = Reuniao::findOrFail($id);
-       return view('reuniao.create' , compact('reuniao', 'usuarios', 'departamentos', 'title'));
+
+       $participantes = DB::table('participantes')
+       ->join('users', 'users.id', '=', 'participantes.usuarios')
+       ->join('reuniaos', 'reuniaos.id', '=', 'participantes.reuniao')
+       ->select('reuniaos.name as nameReu', 'users.name as usersReu','reuniaos.data as dataReu')
+       ->where('reuniao', '=', $reuniao->id)
+       ->get();
+
+       //dd($participantes);
+
+       return view('reuniao.create' , compact('reuniao', 'usuarios', 'departamentos', 'title', 'participantes'));
     }
 
     

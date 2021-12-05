@@ -41,7 +41,13 @@
         @endforeach
         </select> 
       </div>
-
+  </div>
+      <!-- <div class="form-group col-md-5">
+        @foreach($participantes as $participante)
+          <p>{{$participante->usersReu}}</p>
+        @endforeach
+      </div> -->
+<div class="form-row">
       <div class="form-group col-md-3">
         <label for="dtEReuniao">Data</label>
         <input type="date" class="form-control" name="data" id="dtReuniao" value="{{isset($reuniao->data) ? $reuniao->data :old('data')}}">
@@ -58,7 +64,23 @@
     </div>
   </div>
 
-  <div class="form-row" >
+
+
+
+  <div class="form-row">
+      <div class="form-group col-md-4" >
+            <label for="participantesReu">Participantes &nbsp; &nbsp;</label>
+            <div >
+                  <select  class="js-example-basic-multiple" multiple="multiple" na style="width: 300px; height: 100px">
+                      @foreach($usuarios as $usuario)
+                        <option value="{{$usuario->id}}">{{$usuario->name}}</option>
+                      @endforeach
+                  </select>
+            </div>
+        <div>
+    </div>
+
+  <!-- <div class="form-row" >
     <div class="form-group col-md-4" >
         <label for="participantesReu">Participantes &nbsp; &nbsp;</label>
         <div >
@@ -74,8 +96,8 @@
           <select multiple class="dir select-part" name="participantes[]" style="width: 300px; height: 100px"></select>
        </div>
     </div>
-  </div>  
-
+  </div>   -->
+<br>
 <div class="form-row ">
     <div class="form-group col-md-4">
       <button id="Cadastrar" name="Cadastrar" class="btn btn-success" type="Submit">Cadastrar</button>
@@ -83,9 +105,11 @@
   </div> 
 
 </form>
+             
+<script >
 
-                      
-<script>
+$ ( ".js-example-basic-multiple-limit" ). select2 ({ 
+  maximumSelectionLength : 2 }); 
 
 function mover(fonte, destino) {
   var selecionados = fonte.querySelectorAll("option:checked");
