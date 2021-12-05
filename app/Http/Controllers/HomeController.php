@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -18,7 +17,6 @@ class HomeController extends Controller
         $this->middleware('auth');
     }
 
-   
     public function index()
     {
         return view('home');
@@ -26,15 +24,16 @@ class HomeController extends Controller
 
     public function admin(Request $request)
     {
-        $usuarios = User::query()->where('status', 'N')->get(); 
-        return view('admin', compact('usuarios'));
+        $usuarios = User::query()->where('status', 'N')->get();
+        $total = count($usuarios);
+        return view('admin', compact('usuarios', 'total'));
 
-   
         //return view('welcome');
     }
 
-    public function recuperaUsers(){
-        // $usuarios = User::query()->where('status', 'N');   
+    public function recuperaUsers()
+    {
+        // $usuarios = User::query()->where('status', 'N');
     }
 
 }
