@@ -79,6 +79,14 @@
           </li>
           <li>
             <a href="/usuarios"><span class="fa fa-gift mr-3"></span> Usuários</a>
+            <ul>
+                <li>
+                <a href="/usuarios_perfil"><span class="fa fa-gift mr-3"></span> Usuários</a>
+                </li>
+                <li>
+                <a href="#"><span class="fa fa-gift mr-3"></span> Usuários</a>
+                </li>
+            </ul>
           </li>
           <li>
             <a href="#"><span class="fa fa-trophy mr-3"></span> Escalas</a>
