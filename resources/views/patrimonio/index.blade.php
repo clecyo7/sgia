@@ -46,7 +46,7 @@
                                     <td>{{ $patrimonio->nrPatrimonio }}</td>
                                     <td>{{  date('d-m-Y', strtotime($patrimonio->dtAquisicao)) }}</td>
                                    
-                                    @if(!empty($patrimonio->image)){
+                                    @if(!empty($patrimonio->image))
                                     <td><img src="/img/patrimonio/{{$patrimonio->image}}" alt="{{$patrimonio->image}}" class="img-preview-index"></td>
                                     @else
                                         <td></td>               

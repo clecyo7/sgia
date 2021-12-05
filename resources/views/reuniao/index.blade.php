@@ -44,7 +44,7 @@
                                 <td>{{$reuniao->local}}</td>
                                 <td>{{$reuniao->horario}}</td>          
                                  <td style="width: 5%;text-align: center">
-                                 <a href="/reuniao"><button class="btn btn-info btn-sm fa fa-search" aria-hidden="true" title="Visualizar"></button></a>
+                                 <a href="/reuniao_create"><button class="btn btn-info btn-sm fa fa-search" aria-hidden="true" title="Visualizar"></button></a>
                                  </td>
                                  @if($user->status == 'N')
                                  <td style="width: 5%;text-align: center">
