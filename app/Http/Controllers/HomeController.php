@@ -19,6 +19,8 @@ class HomeController extends Controller
 
     public function index()
     {
+        // $this->guard()->logout();
+        //  $request->session()->invalidate();
         return view('home');
     }
 
