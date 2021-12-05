@@ -5,6 +5,9 @@
       <div class="form-group col-md-5">
         <h3 class="mb-2">Cadastro de Reunião</h3>
       </div>
+      <div class="form-group col-md-5">
+        <a href="patrimonio" class="btn btn-success mb-2">Voltar</a>
+      </div>
   </div>
 
   @if(isset($errors) && count ($errors) > 0)

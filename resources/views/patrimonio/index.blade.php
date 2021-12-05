@@ -45,8 +45,12 @@
                                     <td>{{ $patrimonio->quantidade }}</td>
                                     <td>{{ $patrimonio->nrPatrimonio }}</td>
                                     <td>{{  date('d-m-Y', strtotime($patrimonio->dtAquisicao)) }}</td>
-                                    <td>   <img src="/img/patrimonio/{{$patrimonio->image}}" alt="{{$patrimonio->image}}" class="img-preview-index"></td>
-                        
+                                   
+                                    @if(!empty($patrimonio->image)){
+                                    <td><img src="/img/patrimonio/{{$patrimonio->image}}" alt="{{$patrimonio->image}}" class="img-preview-index"></td>
+                                    @else
+                                        <td></td>               
+                                    @endif
                                     <td style="width: 5%;text-align: center">
                                     <a href="/patrimonio/{{$patrimonio->id}}"><button class="btn btn-info btn-sm fa fa-search" aria-hidden="true" title="Visualizar"></button></a>
                                     </td>

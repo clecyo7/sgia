@@ -16,16 +16,13 @@ class PatrimonioController extends Controller
   
     public function index(Request $request)
     {
+        $user = auth()->user();
         $patrimonios = Patrimonio::query()->orderBy('id')->get();
         $mensagem = $request->session()->get('mensagem');
-        return view('patrimonio.index', compact('patrimonios', 'mensagem'));
+        return view('patrimonio.index', compact('patrimonios', 'mensagem', 'user'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+ 
     public function create()
     {
         return view('patrimonio.create');
@@ -65,16 +62,10 @@ class PatrimonioController extends Controller
              return redirect()->route('listar_patrimonio');     
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Patrimonio  $patrimonio
-     * @return \Illuminate\Http\Response
-     */
+ 
     public function show($id)
     {
-        $patrimonio = Patrimonio::find($id);
-
+      // $patrimonio = Patrimonio::find($id);
        // return view('show', ['patrimonio' => $patrimonio]);
     }
 
@@ -88,7 +79,6 @@ class PatrimonioController extends Controller
   
     public function update(Request $request, $id)
     {
-     
         $patrimonio = Patrimonio::find($id);
         $patrimonio->name = $request->input('name');    
         $patrimonio->marca = $request->input('marca');
@@ -97,11 +87,17 @@ class PatrimonioController extends Controller
         $patrimonio->nrPatrimonio = $request->input('nrPatrimonio');
         $patrimonio->dtAquisicao = $request->input('dtAquisicao');
         $imgAntiga =  'img/patrimonio/' . $patrimonio->image;
-        
+        $notaAntiga =  'notaFiscal/patrimonio/' . $patrimonio->notaFiscal;
         $imgAntigaBD =  $patrimonio->image;
-        $patrimonio->image = $request->file('image');
-
-    //Imagem Upload
+        $notaAntigaBD =  $patrimonio->notaFiscal;
+        if( empty($patrimonio->image)){
+            $patrimonio->image = $request->file('image');
+        }
+        if(empty(  $patrimonio->notaFiscal)){
+            $patrimonio->notaFiscal = $request->file('notaFiscal');
+        }
+        
+    //Nota  Upload
     if($request->hasFile('image') && $request->file('image')->isValid()){
 
         $requestImage = $request->image;
@@ -112,6 +108,18 @@ class PatrimonioController extends Controller
           
         if(file_exists($imgAntiga) && !empty( $imgAntigaBD)){
             unlink($imgAntiga);
+        }
+    }
+
+    if($request->hasFile('notaFiscal') && $request->file('notaFiscal')->isValid()){
+        $requestNota = $request->notaFiscal;
+        $extension =  $requestNota->extension();
+        $notaName =   $requestNota->getClientOriginalName();
+        $requestNota->move(public_path('notaFiscal/patrimonio/'),  $notaName);
+        $patrimonio['notaFiscal'] =  $notaName;
+          
+        if(file_exists($notaAntiga) && !empty($notaAntigaBD)){
+            unlink($notaAntiga);
         }
     }
 

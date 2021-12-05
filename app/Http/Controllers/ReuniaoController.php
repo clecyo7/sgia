@@ -21,12 +21,13 @@ class ReuniaoController extends Controller
     
     public function index(Request $request)
     {
+       $user = auth()->user();
        $reunioes = Reuniao::query()->orderBy('id')->get();
     //     $reunioes = DB::table('reuniaos')->join('departamentos','reuniaos.departamentos', '=' , 'departamentos.id')
     //     ->select('departamentos.*' ,'departamentos.name ')->get();
     //    // $reunioes = Reuniao::query()->orderBy('data')->get();
         $mensagem = $request->session()->get('mensagem');
-        return view('reuniao.index', compact('reunioes','mensagem'));
+        return view('reuniao.index', compact('reunioes','mensagem', 'user'));
     }
 
     public function create()
