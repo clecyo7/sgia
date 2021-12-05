@@ -39,14 +39,10 @@
                     @endif
                     >{{$departamento->name}}</option>
         @endforeach
-        </select> 
+        </select>
       </div>
   </div>
-      <!-- <div class="form-group col-md-5">
-        @foreach($participantes as $participante)
-          <p>{{$participante->usersReu}}</p>
-        @endforeach
-      </div> -->
+
 <div class="form-row">
       <div class="form-group col-md-3">
         <label for="dtEReuniao">Data</label>
@@ -57,25 +53,27 @@
       <label for="localReuniao">Local</label>
       <input type="text" class="form-control" name="local" id="localReuniao" value="{{isset($reuniao->local) ? $reuniao->local :old('local')}}">
     </div>
-  
+
     <div class="form-group">
       <label for="hrReuniao">Horário</label>
       <input type="time"  class="form-control" name="horario" id="hrReuniao" value="{{isset($reuniao->horario) ? $reuniao->horario :old('horario')}}">
     </div>
   </div>
 
-
-
-
   <div class="form-row">
       <div class="form-group col-md-4" >
             <label for="participantesReu">Participantes &nbsp; &nbsp;</label>
             <div >
-                  <select  class="js-example-basic-multiple" multiple="multiple" na style="width: 300px; height: 100px">
+                  <select  class="js-example-basic-multiple" multiple="multiple"  name="participantes[]" na style="width: 300px; height: 100px">
                       @foreach($usuarios as $usuario)
-                        <option value="{{$usuario->id}}">{{$usuario->name}}</option>
+                        <option value="{{$usuario->id}}"
+                        @if(in_array($usuario->id,$arrParticipantes)) selected
+                    @endif>
+                        {{$usuario->name}}</option>
+
                       @endforeach
                   </select>
+
             </div>
         <div>
     </div>
@@ -102,15 +100,13 @@
     <div class="form-group col-md-4">
       <button id="Cadastrar" name="Cadastrar" class="btn btn-success" type="Submit">Cadastrar</button>
     </div>
-  </div> 
+  </div>
 
 </form>
-             
+
 <script >
 
-$ ( ".js-example-basic-multiple-limit" ). select2 ({ 
-  maximumSelectionLength : 2 }); 
-
+ $(".js-example-basic-multiple").select2();
 function mover(fonte, destino) {
   var selecionados = fonte.querySelectorAll("option:checked");
   for ( var i = 0 ; i < selecionados.length ; i++ ) {
