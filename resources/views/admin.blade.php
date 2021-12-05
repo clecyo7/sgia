@@ -1,7 +1,10 @@
 @extends('welcome')
 @section('form')
 
-@if(isset($usuarios))
+<div class="alert alert-primary" role="alert">
+  <h4 class="alert-heading">Bem vindo</h4>
+</div>
+@if($total>0)
   <div class="alert alert-warning" role="alert">
   <h4 class="alert-heading">Novos Usuários</h4>
   <p>O sistema possui novo Usuários que precisam ser validados</p>
@@ -10,10 +13,10 @@
     <li>{{ $usuario->name}}</li>
   @endforeach
 
-
+<p><a href="{{ route('usuariosNovos') }}">Clique aqui para ir para página de aprovação</a></p>
+</div>
 @endif
 
 
-</div>
 
 @endsection
