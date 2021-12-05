@@ -9,17 +9,15 @@ class UserController extends Controller
 {
     public function __construct()
     {
-    $this->middleware('auth');
+        $this->middleware('auth');
     }
 
-    
     public function index(Request $request)
     {
         $usuarios = User::query()->orderBy('id')->get();
         $mensagem = $request->session()->get('mensagem');
         return view('usuarios.index', compact('usuarios', 'mensagem'));
     }
-
 
     /**
      * Show the form for creating a new resource.
@@ -28,7 +26,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        
+
     }
 
     /**
@@ -38,25 +36,21 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {  
-
+    {
 
     }
 
-   
     public function show($id)
     {
         $usuario = User::findOrFail($id);
-        return view('usuarios.show',['usuario' => $usuario]);
+        return view('usuarios.show', ['usuario' => $usuario]);
     }
 
-    
     public function edit()
     {
         //
     }
 
-   
     public function update($id, Request $request)
     {
         $usuario = User::find($id);
@@ -65,7 +59,6 @@ class UserController extends Controller
         return redirect()->route('listar_usuarios');
     }
 
-   
     public function destroy(Request $request)
     {
         User::destroy($request->id);
@@ -76,4 +69,30 @@ class UserController extends Controller
             );
         return redirect()->route('listar_usuarios');
     }
+
+    public function newUser(Request $request)
+    {
+        $usuarios = User::where('status', 'N')->orderBy('id')->get();
+        $mensagem = $request->session()->get('mensagem');
+
+        return view('usuarios.newUser', compact('usuarios', 'mensagem'));
+    }
+
+    public function updateNewUser(Request $request)
+    {
+        $usuario = User::find($request->id);
+        //  $usuario->cargoId = $request->cargoId;
+        $usuario->status = 'A';
+        $usuario->save();
+
+        $request->session()
+            ->flash(
+                'mensagem',
+                "Usuário Ativado sucesso"
+            );
+
+        return redirect()->route('usuariosNovos');
+
+    }
+
 }
