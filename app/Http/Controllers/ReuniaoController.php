@@ -32,10 +32,10 @@ class ReuniaoController extends Controller
 
     public function create()
     {
-
+        $title = 'Criar Reunião';
         $usuarios = User::query()->orderBy('id')->get();
         $departamentos = Departamento::query()->orderBy('id')->get();
-        return view('reuniao.create', compact('usuarios', 'departamentos'));
+        return view('reuniao.create', compact('usuarios', 'departamentos', 'title'));
     }
 
     public function store(ReuniaoStoreFormRequest $request)
@@ -78,9 +78,13 @@ class ReuniaoController extends Controller
     }
 
    
-    public function edit(Reuniao $reuniao)
+    public function edit($id)
     {
-        //
+        $title = 'Editar Reunião';
+        $usuarios = User::query()->orderBy('id')->get();
+        $departamentos = Departamento::query()->orderBy('id')->get();
+       $reuniao = Reuniao::findOrFail($id);
+       return view('reuniao.create' , compact('reuniao', 'usuarios', 'departamentos', 'title'));
     }
 
     

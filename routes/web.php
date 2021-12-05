@@ -39,13 +39,16 @@ Route::get('/eventos', 'EventoController@index')->name('listar_eventos');
 Route::get('/eventos_create', 'EventoController@create')->middleware('auth');
 Route::post('/eventos_create', 'EventoController@store')->name('cadastrar_eventos');
 Route::delete('/eventos/{id}', 'EventoController@destroy');
-
+Route::put('/eventos/update/{id}', 'EventoController@update');
+Route::get('/eventos/{id}', 'EventoController@edit');
 
 /* -- ROTAS DE REUNIÃO -- */
 Route::get('/reunioes', 'ReuniaoController@index')->name('listar_reuniao');
 Route::get('/reuniao_create', 'ReuniaoController@create');
 Route::post('/reuniao_create', 'ReuniaoController@store')->name('cadastrar_reuniao');
 Route::delete('/reunioes/{id}', 'ReuniaoController@destroy');
+Route::put('/reuniao/update/{id}', 'ReuniaoController@update');
+Route::get('/reuniao/{id}', 'ReuniaoController@edit');
 
 
 

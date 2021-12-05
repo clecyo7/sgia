@@ -3,7 +3,7 @@
 
 <div class="form-row">
       <div class="form-group col-md-5">
-        <h3 class="mb-2">Cadastro de Reunião</h3>
+        <h3 class="mb-2">{{$title}}</h3>
       </div>
       <div class="form-group col-md-5">
         <a href="patrimonio" class="btn btn-success mb-2">Voltar</a>
@@ -25,36 +25,36 @@
   <div class="form-row">
       <div class="form-group col-md-5">
         <label for="nameReuniao">Nome</label>
-        <input type="text" class="form-control"  name="name" id="nameReuniao" value="{{old('name')}}">
+        <input type="text" class="form-control"  name="name" id="nameReuniao" value="{{isset($reuniao->name) ? $reuniao->name : old('name') }}">
       </div>
 
       <div class="form-group col-md-5">
       <label for="departamentoReuniao">Departamento</label>
-        <select id="departamentoReu" name="departamentoReu" class="form-control" value="{{old('departamentoReu')}}">
+        <select id="departamentoReu" name="departamentoReu" class="form-control" value="old('departamentoReu')}}">
             <option>Escolha...</option>
         @foreach($departamentos as $departamento)
-                    <option value="{{$departamento->id}}">{{$departamento->name}}</option>
+                    <option value="{{$departamento->id}}"
+                    @if(isset($reuniao) && $reuniao->departamentoReu == $departamento->id)
+                    selected
+                    @endif
+                    >{{$departamento->name}}</option>
         @endforeach
         </select> 
       </div>
 
-      <!-- <div class="form-group col-md-5">
-        <label for="departamentoReuniao">Departamento</label>
-        <input type="text" class="form-control"  name="departamento" id="departamentoReuniao">
-      </div> -->
       <div class="form-group col-md-3">
         <label for="dtEReuniao">Data</label>
-        <input type="date" class="form-control" name="data" id="dtReuniao" value="{{old('data')}}">
+        <input type="date" class="form-control" name="data" id="dtReuniao" value="{{isset($reuniao->data) ? $reuniao->data :old('data')}}">
       </div>
 
       <div class="form-group col-md-3">
       <label for="localReuniao">Local</label>
-      <input type="text" class="form-control" name="local" id="localReuniao" value="{{old('local')}}">
+      <input type="text" class="form-control" name="local" id="localReuniao" value="{{isset($reuniao->local) ? $reuniao->local :old('local')}}">
     </div>
   
     <div class="form-group">
       <label for="hrReuniao">Horário</label>
-      <input type="time"  class="form-control" name="horario" id="hrReuniao" value="{{old('horario')}}">
+      <input type="time"  class="form-control" name="horario" id="hrReuniao" value="{{isset($reuniao->horario) ? $reuniao->horario :old('horario')}}">
     </div>
   </div>
 
