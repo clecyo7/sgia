@@ -25,7 +25,6 @@ class ReuniaoStoreFormRequest extends FormRequest
     {
         return [
             'name'              => 'required|min:3|max:100',
-            'data'              => 'required|date|after:tomorrow',
             'local'             => 'required',
             'horario'           => 'required',
             'participantes'     => 'required',

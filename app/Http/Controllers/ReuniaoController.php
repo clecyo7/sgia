@@ -20,14 +20,19 @@ class ReuniaoController extends Controller
 
     public function index(Request $request)
     {
+        
         $user = auth()->user();
-        $reunioes = Reuniao::query()->orderBy('id')->get();
-        //     $reunioes = DB::table('reuniaos')->join('departamentos','reuniaos.departamentos', '=' , 'departamentos.id')
-        //     ->select('departamentos.*' ,'departamentos.name ')->get();
-        //    // $reunioes = Reuniao::query()->orderBy('data')->get();
+
+        $reunioes = DB::table('reuniaos')
+         ->leftJoin('departamentos','reuniaos.id', '=' , 'departamentos.id')
+         ->select('*','departamentos.name as nameDep')
+         ->get();
+          
         $mensagem = $request->session()->get('mensagem');
         return view('reuniao.index', compact('reunioes', 'mensagem', 'user'));
     }
+
+
 
     public function create()
     {
@@ -41,6 +46,7 @@ class ReuniaoController extends Controller
 
     public function store(ReuniaoStoreFormRequest $request)
     {
+        //dd($request->all());
         // Laço para executar se todas as querys forem  true  abre -> DB::beginTransaction();  fecha-> DB::commit();
 
         DB::beginTransaction();
@@ -68,6 +74,7 @@ class ReuniaoController extends Controller
                     'mensagem',
                     $msgErro
                 );
+                
             return redirect()->route('listar_reuniao');
         }
     }
@@ -79,10 +86,6 @@ class ReuniaoController extends Controller
 
     public function edit($id)
     {
-        // SELECT reuniaos.name, users.name FROM sgia.participantes
-        // inner join users on users.id = participantes.usuarios
-        // inner join reuniaos on reuniaos.id = participantes.reuniao
-
         $title = 'Editar Reunião';
         $usuarios = User::query()->orderBy('id')->get();
         $departamentos = Departamento::query()->orderBy('id')->get();
@@ -101,23 +104,59 @@ class ReuniaoController extends Controller
             $arrParticipantes[] = $participante->id;
         }
 
-        //dd($participantes);
-
         return view('reuniao.create', compact('reuniao', 'usuarios', 'departamentos', 'title', 'participantes', 'arrParticipantes'));
     }
 
-    public function update(Request $request, Reuniao $reuniao)
+    public function update(Request $request, $id)
     {
-        //
-    }
+    DB::beginTransaction();
+        try {
+            $dataForm = $request->all();
+            $reuniao = Reuniao::find($id);
 
-    public function destroy(Request $request)
+            // altera os dados da reunião 
+            $update = $reuniao->update($dataForm); 
+
+            // exclui todos os participantes 1º da reunião 
+            Participante::where('reuniao',$reuniao->id)->delete();
+            
+            // pega os participantes da reunião e põem dentro de um array
+            $arrArray = $request->participantes;
+            // faz um novo  create pegando o id da reunião.
+            for ($i = 0; $i < count($arrArray); $i++) {
+            $participantes = new Participante();
+            $participantes->reuniao = $reuniao->id;
+            $participantes->usuarios = $request->participantes[$i];
+            $participantes->save();
+        }
+    DB::commit();
+            $request->session()
+                ->flash(
+                    'mensagem',
+                    "Reunião {$reuniao->name} Alterada  com sucesso!"
+                );
+            return redirect()->route('listar_reuniao');
+
+    } catch (\Exception $erro) {
+            $msgErro = $erro->getMessage();
+            $request->session()
+                ->flash(
+                    'mensagem',
+                    $msgErro
+                );        
+            return redirect()->route('listar_reuniao');
+    }
+}
+
+    public function destroy(Request $request, $id)
     {
+        Participante::where('reuniao',$request->id)->delete();
         Reuniao::destroy($request->id);
+       
         $request->session()
             ->flash(
                 'mensagem',
-                "Reunião removido com sucesso"
+                "Reunião excluida com sucesso"
             );
         return redirect()->route('listar_reuniao');
     }

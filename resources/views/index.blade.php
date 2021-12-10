@@ -45,7 +45,10 @@
                 <a href="" class="nav-link">Escalas</a>
               </li>
               <li class="nav-item">
-                <a href="" class="nav-link">Agenda</a>
+                <a href="#agenda" class="nav-link">Agenda</a>
+              </li>
+              <li class="nav-item">
+                <a href="" class="nav-link">Eventos</a>
               </li>
               <li class="nav-item">
                 <a href="" class="nav-link">Fotos</a>
@@ -178,6 +181,54 @@
       </div>
      </div>
    </section><!--/fim recursos -->
+
+   <section id="agenda" class="caixa"><!--/INICIO AGENDA -->
+    <div class="container">  
+        <div class="card">
+            <div class="bootstrap-data-table-panel">
+                    <table id="" class="display table table-borderd table-hover">
+                        <thead>
+                            <tr>
+                                <th><h6><b>Nome</b></h6></th>
+                                <th><h6><b>Departamento</b></h6></th>
+                                <th><h6><b>Data</b></h6></th>
+                                <th><h6><b>Local</b></h6></th>
+                                <th><h6><b>Horário</b></h6></th>
+                      
+                                <th><h6><b>Ação</b></h6></th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                        <tr>
+                            @foreach($reunioes as $reuniao)
+                                <td>{{$reuniao->name}}</td>
+                                <td>{{$reuniao->nameDep}}</td>
+                                <td>{{ date('d-m-Y', strtotime($reuniao->data)) }}</td>
+                                <td>{{$reuniao->local}}</td>
+                                <td>{{$reuniao->horario}}</td>          
+                                 <td style="width: 5%;text-align: center">
+                                 <a href="/reuniao/{{$reuniao->id}}"><button class="btn btn-info btn-sm fa fa-search" aria-hidden="true" title="Visualizar"></button></a>
+                                 </td>
+                               
+                                 <td style="width: 5%;text-align: center">
+                                     <form method="post" action="/reunioes/ {{$reuniao->id}}" onsubmit="return confirm('Tem certeza que deseja remover?')">
+                                         @csrf
+                                         @method('DELETE')
+                                             <button class="btn btn-danger btn-sm fa fa-trash" aria-hidden="true" title="Excluir"></button>
+                                     </form>
+                                 </td>
+                              
+                        <tr>
+                       @endforeach
+                        </tbody>
+                     </table>
+            
+            </div>
+        </div>
+    </div>
+   
+   </section><!--/FIM AGENDA -->
 
    <footer id="rodape">
      <div class="container">

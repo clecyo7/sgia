@@ -16,7 +16,7 @@ class CreateReuniaosTable extends Migration
         Schema::create('reuniaos', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->foreignId('departamentoReu')->constrained('departamentos');
+            $table->foreignId('departamentoReu')->constrained('departamentos')->onDelete('cascade');
             $table->date('data');
             $table->string('local');
             $table->time('horario');

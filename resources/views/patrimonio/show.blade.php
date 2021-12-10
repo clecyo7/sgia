@@ -1,4 +1,4 @@
-@extends('welcome')
+<!-- @extends('welcome')
 @section('form')
 
 <div class="form-row">
@@ -62,4 +62,4 @@
     </div>
   </div> 
 
-</form>
+</form> -->

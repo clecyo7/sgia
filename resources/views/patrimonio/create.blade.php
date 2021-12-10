@@ -6,7 +6,7 @@
         <h3 class="mb-2">Cadastro de Patrimônio</h3>
       </div>
       <div class="form-group col-md-5">
-        <a href="patrimonio" class="btn btn-success mb-2">Voltar</a>
+        <a href="javascript:history.back()" class="btn btn-primary mb-2">Voltar</a>
       </div>
   </div>
 
@@ -29,7 +29,7 @@
   <div class="form-row" >
     <div class="form-group col-md-3">
       <label for="valorPatrimonio">Valor do Patrimônio</label>
-      <input type="number" min="0.00" max="10000.00" class="form-control" name="valor" id="valorPatrimonio" required>
+      <input type="number"  class="form-control" name="valor" id="valorPatrimonio" required>
     </div>
   
     <div class="form-group">

@@ -39,8 +39,8 @@
                         <tr>
                             @foreach($reunioes as $reuniao)
                                 <td>{{$reuniao->name}}</td>
-                                <td>{{$reuniao->departamentoReu}}</td>
-                                <td>{{ $reuniao->data }}</td>
+                                <td>{{$reuniao->nameDep}}</td>
+                                <td>{{ date('d-m-Y', strtotime($reuniao->data)) }}</td>
                                 <td>{{$reuniao->local}}</td>
                                 <td>{{$reuniao->horario}}</td>          
                                  <td style="width: 5%;text-align: center">

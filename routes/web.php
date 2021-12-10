@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-
+use App\User;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,9 +14,11 @@ use Illuminate\Support\Facades\Route;
 |
  */
 
-Route::get('/', function () {
-    return view('index');
-});
+// Route::get('/', function () {
+//     return view('index');
+// });
+
+Route::get('/', 'IndexController@index');
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/welcome', 'HomeController@admin');
@@ -44,7 +46,7 @@ Route::get('/reunioes', 'ReuniaoController@index')->name('listar_reuniao');
 Route::get('/reuniao_create', 'ReuniaoController@create');
 Route::post('/reuniao_create', 'ReuniaoController@store')->name('cadastrar_reuniao');
 Route::delete('/reunioes/{id}', 'ReuniaoController@destroy');
-Route::put('/reuniao/update/{id}', 'ReuniaoController@update');
+Route::put('/reuniao/update/{id}', 'ReuniaoController@update')->name('editar_reuniao');
 Route::get('/reuniao/{id}', 'ReuniaoController@edit');
 
 /* -- ROTAS DE DEPARTAMENTO -- */
@@ -60,3 +62,12 @@ Route::post('/usuarios_update', 'UserController@update')->name('update_usuario')
 Route::delete('/usuarios/{id}', 'UserController@destroy');
 Route::get('/usuariosNovos', 'UserController@newUser')->name('usuariosNovos');
 Route::post('/usuariosNovosUpdate', 'UserController@updateNewUser')->name('usuariosNovosUpdate');
+
+
+Route::get('envio-email', function(){
+    $user =  new stdClass();
+    $user->name = 'Clecyo';
+    $user->email = 'clecynho@gmail.com';
+    return new \App\Mail\emailSgia($user);
+   \Illuminate\Support\Facades\Mail::send(new \App\Mail\emailSgia($user));
+});

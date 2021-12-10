@@ -6,7 +6,7 @@
         <h3 class="mb-2">{{$title}}</h3>
       </div>
       <div class="form-group col-md-5">
-        <a href="patrimonio" class="btn btn-success mb-2">Voltar</a>
+        <a href="javascript:history.back()" class="btn btn-primary mb-2">Voltar</a>
       </div>
   </div>
 
@@ -19,8 +19,15 @@
   @endif
 
 <div class="card-body">
-
+@if(isset($reuniao))
+<form id="cad_reuniao" action="/reuniao/update/{{$reuniao->id}}" method="POST" enctype="multipart/form-data">
+  {!! method_field('PUT') !!}
+@else
 <form id="cad_reuniao" action="{{ route('cadastrar_reuniao') }}" method="POST" enctype="multipart/form-data">
+@endif
+
+
+
 @csrf
   <div class="form-row">
       <div class="form-group col-md-5">
@@ -98,7 +105,13 @@
 <br>
 <div class="form-row ">
     <div class="form-group col-md-4">
-      <button id="Cadastrar" name="Cadastrar" class="btn btn-success" type="Submit">Cadastrar</button>
+    @if(isset($reuniao))
+    <button id="update" name="update" class="btn btn-warning" type="Submit">Atualizar</button>
+    @else
+    <button id="Cadastrar" name="Cadastrar" class="btn btn-success" type="Submit">Cadastrar</button>
+    @endif
+     
+     
     </div>
   </div>
 
@@ -107,33 +120,34 @@
 <script >
 
  $(".js-example-basic-multiple").select2();
-function mover(fonte, destino) {
-  var selecionados = fonte.querySelectorAll("option:checked");
-  for ( var i = 0 ; i < selecionados.length ; i++ ) {
-      fonte.removeChild(selecionados[i]);
-      destino.appendChild(selecionados[i]);
-  }
-}
 
-$("#cad_reuniao").submit(function(event){
-   event.preventDefault();
-});
+// function mover(fonte, destino) {
+//   var selecionados = fonte.querySelectorAll("option:checked");
+//   for ( var i = 0 ; i < selecionados.length ; i++ ) {
+//       fonte.removeChild(selecionados[i]);
+//       destino.appendChild(selecionados[i]);
+//   }
+// }
 
-$('#Cadastrar').click(function() {
-	$('#cad_reuniao').submit();
-});
+// $("#cad_reuniao").submit(function(event){
+//    event.preventDefault();
+// });
+
+// $('#Cadastrar').click(function() {
+// 	$('#cad_reuniao').submit();
+// });
 
 
 
-document.querySelector("button.dir").onclick = function() {
-    mover(document.querySelector("select.esq"),
-          document.querySelector("select.dir"));
-};
+// document.querySelector("button.dir").onclick = function() {
+//     mover(document.querySelector("select.esq"),
+//           document.querySelector("select.dir"));
+// };
 
-document.querySelector("button.esq").onclick = function() {
-    mover(document.querySelector("select.dir"),
-          document.querySelector("select.esq"));
-};
+// document.querySelector("button.esq").onclick = function() {
+//     mover(document.querySelector("select.dir"),
+//           document.querySelector("select.esq"));
+// };
 
 </script>
 
