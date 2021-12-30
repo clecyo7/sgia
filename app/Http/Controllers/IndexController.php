@@ -10,12 +10,12 @@ class IndexController extends Controller
     public function index(){
         $user = auth()->user();
 
-        $reunioes = DB::table('reuniaos')
-         ->leftJoin('departamentos','reuniaos.id', '=' , 'departamentos.id')
-         ->select('*','departamentos.name as nameDep')
-         ->get();
+    //     $reunioes = DB::table('reuniaos')
+    //      ->leftJoin('departamentos','reuniaos.id', '=' , 'departamentos.id')
+    //      ->select('*','departamentos.name as nameDep')
+    //      ->get();
           
-       // $mensagem = $request->session()->get('mensagem');
-        return view('reuniao.index', compact('reunioes','user'));
+    //    // $mensagem = $request->session()->get('mensagem');
+        return view('index');
     }
 }

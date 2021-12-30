@@ -23,13 +23,21 @@ class ReuniaoController extends Controller
         
         $user = auth()->user();
 
-        $reunioes = DB::table('reuniaos')
-         ->leftJoin('departamentos','reuniaos.id', '=' , 'departamentos.id')
-         ->select('*','departamentos.name as nameDep')
-         ->get();
-          
+        // $reunioes = DB::table('reuniaos')
+        //  ->join('departamentos','reuniaos.id', '=' , 'departamentos.id')
+        //  ->select('*')
+        //  ->get();
+
+         $reunioes = DB::table('reuniaos')
+            ->leftJoin('departamentos', 'departamentos.id', '=', 'reuniaos.departamentoReu')
+            ->select('reuniaos.id','reuniaos.name', 'reuniaos.departamentoReu', 'reuniaos.data', 'reuniaos.local', 'reuniaos.horario', 'departamentos.name as deparName')
+            ->get();
+
+         // dd($reunioes);
         $mensagem = $request->session()->get('mensagem');
-        return view('reuniao.index', compact('reunioes', 'mensagem', 'user'));
+        
+       
+        return view('reuniao.index', compact('reunioes', 'mensagem', 'user' ));
     }
 
 

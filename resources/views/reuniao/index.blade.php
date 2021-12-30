@@ -39,14 +39,14 @@
                         <tr>
                             @foreach($reunioes as $reuniao)
                                 <td>{{$reuniao->name}}</td>
-                                <td>{{$reuniao->nameDep}}</td>
+                                <td>{{$reuniao->deparName}}</td>
                                 <td>{{ date('d-m-Y', strtotime($reuniao->data)) }}</td>
                                 <td>{{$reuniao->local}}</td>
                                 <td>{{$reuniao->horario}}</td>          
                                  <td style="width: 5%;text-align: center">
                                  <a href="/reuniao/{{$reuniao->id}}"><button class="btn btn-info btn-sm fa fa-search" aria-hidden="true" title="Visualizar"></button></a>
                                  </td>
-                                 @if($user->status != 'N')
+                              
                                  <td style="width: 5%;text-align: center">
                                      <form method="post" action="/reunioes/ {{$reuniao->id}}" onsubmit="return confirm('Tem certeza que deseja remover?')">
                                          @csrf
@@ -54,9 +54,7 @@
                                              <button class="btn btn-danger btn-sm fa fa-trash" aria-hidden="true" title="Excluir"></button>
                                      </form>
                                  </td>
-                                @else
-                                    <td></td>
-                                @endif
+                              
                         <tr>
                @endforeach
                         </tbody>
