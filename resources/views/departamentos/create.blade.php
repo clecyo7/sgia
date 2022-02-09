@@ -8,6 +8,8 @@
   </div>
 
 
+  
+
 <div class="card-body">
 
 <form action="{{ route('cadastrar_departamentos') }}" method="POST" enctype="multipart/form-data">
